@@ -91,6 +91,23 @@ export default function RootLayout({
           }}
         />
 
+        {/* RealScout Web Components */}
+        <Script 
+          src="https://em.realscout.com/widgets/realscout-web-components.umd.js" 
+          type="module"
+          strategy="beforeInteractive"
+        />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            realscout-simple-search {
+              --rs-ss-font-primary-color: #6a6d72;
+              --rs-ss-searchbar-border-color: hsl(0, 0%, 80%);
+              --rs-ss-box-shadow: 0 10px 15px -3px #0000001a;
+              --rs-ss-widget-width: 500px !important;
+            }
+          `
+        }} />
+
         {/* Third-party scripts */}
         <Script 
           src="https://widgets.realscout.com/embed.js"
