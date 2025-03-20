@@ -6,6 +6,7 @@ import Script from "next/script";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         {/* Search Engine Verification */}
         <meta name="google-site-verification" content="add-your-google-site-verification-here" />
@@ -90,40 +91,33 @@ export default function RootLayout({
           }}
         />
 
-        {/* RealScout Widget */}
+        {/* Third-party scripts */}
         <Script 
           src="https://widgets.realscout.com/embed.js"
           strategy="afterInteractive"
           async
           defer
-          crossOrigin="anonymous"
         />
         
-        {/* Homebot Widget */}
         <Script 
           src="https://www.homebot.ai/widget/embed.js"
           strategy="afterInteractive"
           async
           defer
-          crossOrigin="anonymous"
         />
         
-        {/* CloudCMA Widget */}
         <Script 
           src="https://widgets.cloudcma.com/loader.js"
           strategy="afterInteractive"
           async
           defer
-          crossOrigin="anonymous"
         />
         
-        {/* Percy.ai HVS-Autocomplete */}
         <Script 
           src="https://cdn.percy.ai/js/hvs-widget.min.js"
           strategy="afterInteractive"
           async
           defer
-          crossOrigin="anonymous"
         />
       </head>
       <body className={`${inter.className} antialiased`}>

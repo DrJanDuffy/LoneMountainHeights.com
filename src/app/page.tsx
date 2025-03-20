@@ -5,18 +5,23 @@ import { initializeWidgets } from "@/config/widgets";
 import { initGA, pageview } from "@/utils/analytics";
 import { TrackedWidget } from "@/components/TrackedWidget";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function Home() {
   const [widgetsLoaded, setWidgetsLoaded] = useState(false);
 
   useEffect(() => {
     // Initialize analytics
-    initGA();
-    pageview(window.location.pathname);
+    if (typeof window !== 'undefined') {
+      initGA();
+      pageview(window.location.pathname);
 
-    // Initialize widgets
-    initializeWidgets();
-    const timer = setTimeout(() => setWidgetsLoaded(true), 2000);
-    return () => clearTimeout(timer);
+      // Initialize widgets
+      initializeWidgets();
+      const timer = setTimeout(() => setWidgetsLoaded(true), 2000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
