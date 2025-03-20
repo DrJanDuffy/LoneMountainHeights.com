@@ -57,30 +57,31 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* RealScout Web Components */}
         <RealScoutScript />
 
         {/* Third-party scripts */}
         <Script 
           src="https://widgets.realscout.com/embed.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           async
         />
         
         <Script 
           src="https://www.homebot.ai/widget/embed.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           async
         />
         
         <Script 
           src="https://widgets.cloudcma.com/loader.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           async
         />
         
         <Script 
           src="https://cdn.percy.ai/js/hvs-widget.min.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           async
         />
 

@@ -1,25 +1,18 @@
 'use client';
 
 import Script from 'next/script';
-import { useEffect } from 'react';
 
 export function RealScoutScript() {
-  useEffect(() => {
-    const initializeRealScout = () => {
-      if (window.RealScoutWebComponents) {
-        window.RealScoutWebComponents.initialize();
-      }
-    };
-
-    window.addEventListener('load', initializeRealScout);
-    return () => window.removeEventListener('load', initializeRealScout);
-  }, []);
-
   return (
     <>
       <Script 
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js" 
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
+        onReady={() => {
+          if (window.RealScoutWebComponents) {
+            window.RealScoutWebComponents.initialize();
+          }
+        }}
       />
       <style jsx global>{`
         realscout-simple-search {
