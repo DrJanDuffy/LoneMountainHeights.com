@@ -29,10 +29,15 @@ export default function Home() {
       {/* RealScout Simple Search */}
       <div className="w-full bg-gradient-to-r from-blue-600 to-blue-800 pt-8 pb-4">
         <div className="max-w-3xl mx-auto px-4">
-          <realscout-simple-search 
-            agent-encoded-id="QWdlbnQtMjI1MDUw"
+          <div 
+            id="realscout-search-container"
             className="w-full shadow-xl rounded-lg overflow-hidden"
-          ></realscout-simple-search>
+          >
+            <realscout-simple-search 
+              agent-encoded-id="QWdlbnQtMjI1MDUw"
+              className="w-full"
+            ></realscout-simple-search>
+          </div>
         </div>
       </div>
 

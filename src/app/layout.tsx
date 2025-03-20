@@ -59,9 +59,22 @@ export default function RootLayout({
         {/* RealScout Web Components */}
         <Script 
           src="https://em.realscout.com/widgets/realscout-web-components.umd.js" 
-          type="module"
           strategy="beforeInteractive"
+          onLoad={() => {
+            console.log('RealScout Web Components loaded');
+            // Initialize RealScout components after load
+            const script = document.createElement('script');
+            script.innerHTML = `
+              window.addEventListener('load', function() {
+                if (window.RealScoutWebComponents) {
+                  window.RealScoutWebComponents.initialize();
+                }
+              });
+            `;
+            document.head.appendChild(script);
+          }}
         />
+
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-simple-search {
