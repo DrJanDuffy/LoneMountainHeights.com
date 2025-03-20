@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { RealScoutScript } from "@/components/RealScoutScript";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,35 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* RealScout Web Components */}
-        <Script 
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js" 
-          strategy="beforeInteractive"
-          onLoad={() => {
-            console.log('RealScout Web Components loaded');
-            // Initialize RealScout components after load
-            const script = document.createElement('script');
-            script.innerHTML = `
-              window.addEventListener('load', function() {
-                if (window.RealScoutWebComponents) {
-                  window.RealScoutWebComponents.initialize();
-                }
-              });
-            `;
-            document.head.appendChild(script);
-          }}
-        />
-
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            realscout-simple-search {
-              --rs-ss-font-primary-color: #6a6d72;
-              --rs-ss-searchbar-border-color: hsl(0, 0%, 80%);
-              --rs-ss-box-shadow: 0 10px 15px -3px #0000001a;
-              --rs-ss-widget-width: 500px !important;
-            }
-          `
-        }} />
+        <RealScoutScript />
 
         {/* Third-party scripts */}
         <Script 
