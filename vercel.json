@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "env": {
+    "NEXT_PUBLIC_REALSCOUT_API_KEY": "sk_realscout_test_key",
+    "NEXT_PUBLIC_REALSCOUT_ACCOUNT_ID": "rs_acc_123456",
+    "NEXT_PUBLIC_HOMEBOT_API_KEY": "hb_test_api_key_789",
+    "NEXT_PUBLIC_HOMEBOT_ACCOUNT_ID": "hb_acc_456789",
+    "NEXT_PUBLIC_CLOUDCMA_API_KEY": "cma_test_key_123456",
+    "NEXT_PUBLIC_PERCY_API_KEY": "percy_test_key_789012",
+    "NEXT_PUBLIC_PERCY_REGION": "us"
+  }
+} 

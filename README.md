@@ -1,40 +1,75 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lone Mountain Homes
+
+A modern real estate website featuring powerful market analysis tools and property search capabilities.
+
+## Features
+
+- Interactive property search with RealScout integration
+- Home valuation tools powered by Homebot
+- Comprehensive market analysis using CloudCMA
+- Neighborhood insights with Percy.ai
+- Mobile-responsive design
+- Modern UI with Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy the environment file template:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Configure your API keys in `.env.local`:
+   - RealScout API credentials
+   - Homebot API credentials
+   - CloudCMA API key
+   - Percy.ai API key
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Widget Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### RealScout
+1. Sign up for a RealScout account
+2. Obtain your API key and Account ID from the dashboard
+3. Add them to your `.env.local` file
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Homebot
+1. Create a Homebot account
+2. Get your API credentials from the integration settings
+3. Configure them in `.env.local`
 
-## Learn More
+### CloudCMA
+1. Register for a CloudCMA account
+2. Generate an API key from your account settings
+3. Add it to `.env.local`
 
-To learn more about Next.js, take a look at the following resources:
+### Percy.ai
+1. Sign up for Percy.ai
+2. Get your API key from the dashboard
+3. Configure it in `.env.local`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Built with Next.js 14
+- Styled with Tailwind CSS
+- TypeScript for type safety
+- Environment variables for secure configuration
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# LoneMountainHomes
->>>>>>> bd4f832ebd42cb5db7d6c9802435960fa9080881
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
