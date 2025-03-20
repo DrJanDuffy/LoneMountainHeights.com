@@ -27,34 +27,79 @@ body {
   border-radius: 0.75rem;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  min-height: 400px;
+  background: white;
 }
 
 /* Percy.ai HVS Widget Customization */
 .hvs-widget {
-  --hvs-primary-color: #2563eb;
-  --hvs-secondary-color: #1d4ed8;
+  --hvs-primary-color: #0ea5e9;
+  --hvs-secondary-color: #0284c7;
   --hvs-text-color: #1f2937;
   --hvs-border-radius: 0.5rem;
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-inter);
 }
 
 /* RealScout Widget Customization */
 .realscout-widget {
-  --rs-primary-color: #2563eb;
-  --rs-font-family: var(--font-geist-sans);
+  --rs-primary-color: #0ea5e9;
+  --rs-font-family: var(--font-inter);
   --rs-border-radius: 0.5rem;
 }
 
 /* Homebot Widget Customization */
 .homebot-widget {
-  --hb-primary-color: #2563eb;
-  --hb-font-family: var(--font-geist-sans);
+  --hb-primary-color: #0ea5e9;
+  --hb-font-family: var(--font-inter);
   --hb-border-radius: 0.5rem;
 }
 
 /* CloudCMA Widget Customization */
 .cloudcma-widget {
-  --cma-primary-color: #2563eb;
-  --cma-font-family: var(--font-geist-sans);
+  --cma-primary-color: #0ea5e9;
+  --cma-font-family: var(--font-inter);
   --cma-border-radius: 0.5rem;
+}
+
+/* Button Styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700;
+}
+
+.btn-outline {
+  @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-50;
+}
+
+/* Section Styles */
+.section {
+  @apply py-16;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold tracking-tight;
+}
+
+/* Animation */
+.fade-in {
+  @apply animate-[fadeIn_0.5s_ease-in-out];
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

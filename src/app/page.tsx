@@ -1,16 +1,20 @@
 'use client';
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { initializeWidgets } from "@/config/widgets";
-import { WidgetLoader } from "@/components/WidgetLoader";
+import { initGA, pageview } from "@/utils/analytics";
+import { TrackedWidget } from "@/components/TrackedWidget";
 
 export default function Home() {
   const [widgetsLoaded, setWidgetsLoaded] = useState(false);
 
   useEffect(() => {
+    // Initialize analytics
+    initGA();
+    pageview(window.location.pathname);
+
+    // Initialize widgets
     initializeWidgets();
-    // Give widgets some time to load
     const timer = setTimeout(() => setWidgetsLoaded(true), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -45,35 +49,24 @@ export default function Home() {
             Powerful Market Analysis Tools
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Home Valuation Widget */}
-            <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Home Valuation</h3>
-              {!widgetsLoaded ? (
-                <WidgetLoader title="Loading Home Valuation Tool..." />
-              ) : (
-                <div id="homebot-widget" className="min-h-[400px]"></div>
-              )}
-            </div>
-
-            {/* Market Analysis Widget */}
-            <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Market Analysis</h3>
-              {!widgetsLoaded ? (
-                <WidgetLoader title="Loading Market Analysis Tool..." />
-              ) : (
-                <div id="cloudcma-widget" className="min-h-[400px]"></div>
-              )}
-            </div>
-
-            {/* Property Search Widget */}
-            <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Smart Property Search</h3>
-              {!widgetsLoaded ? (
-                <WidgetLoader title="Loading Property Search Tool..." />
-              ) : (
-                <div id="realscout-widget" className="min-h-[400px]"></div>
-              )}
-            </div>
+            <TrackedWidget
+              id="homebot-widget"
+              name="Homebot"
+              title="Home Valuation"
+              isLoaded={widgetsLoaded}
+            />
+            <TrackedWidget
+              id="cloudcma-widget"
+              name="CloudCMA"
+              title="Market Analysis"
+              isLoaded={widgetsLoaded}
+            />
+            <TrackedWidget
+              id="realscout-widget"
+              name="RealScout"
+              title="Smart Property Search"
+              isLoaded={widgetsLoaded}
+            />
           </div>
         </div>
       </section>
@@ -123,11 +116,13 @@ export default function Home() {
             Neighborhood Analysis
           </h2>
           <div className="w-full max-w-2xl mx-auto">
-            {!widgetsLoaded ? (
-              <WidgetLoader title="Loading Neighborhood Analysis Tool..." />
-            ) : (
-              <div id="percy-hvs-widget" className="min-h-[300px]"></div>
-            )}
+            <TrackedWidget
+              id="percy-hvs-widget"
+              name="Percy.ai"
+              title="Neighborhood Insights"
+              isLoaded={widgetsLoaded}
+              className="bg-transparent"
+            />
           </div>
         </div>
       </section>

@@ -1,0 +1,23 @@
+# www.findlonemountainhomes.com robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.findlonemountainhomes.com/sitemap.xml
+
+# Disallow admin and api routes
+Disallow: /api/*
+Disallow: /admin/*
+Disallow: /_next/*
+
+# Allow CSS and JavaScript
+Allow: /*.css$
+Allow: /*.js$
+
+# Block certain file types
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+
+# Crawl delay
+Crawl-delay: 10 

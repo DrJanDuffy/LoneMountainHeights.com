@@ -32,4 +32,6 @@ declare global {
       init: (config: PercyConfig) => void;
     };
   }
-} 
+}
+
+export {}; 

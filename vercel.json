@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["iad1"],
   "env": {
+    "NEXT_PUBLIC_GA_ID": "G-XXXXXXXXXX",
     "NEXT_PUBLIC_REALSCOUT_API_KEY": "sk_realscout_test_key",
     "NEXT_PUBLIC_REALSCOUT_ACCOUNT_ID": "rs_acc_123456",
     "NEXT_PUBLIC_HOMEBOT_API_KEY": "hb_test_api_key_789",

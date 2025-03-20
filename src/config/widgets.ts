@@ -22,36 +22,48 @@ export const widgetConfig = {
   },
 } as const;
 
+declare global {
+  interface Window {
+    RealScout?: any;
+    Homebot?: any;
+    CloudCMA?: any;
+    Percy?: any;
+  }
+}
+
 // Widget initialization functions
 export const initializeWidgets = () => {
-  // RealScout
-  if (typeof window !== 'undefined' && window.RealScout) {
-    window.RealScout.init({
-      apiKey: widgetConfig.realscout.apiKey,
-      accountId: widgetConfig.realscout.accountId,
-    });
-  }
+  // Add a small delay to ensure scripts are loaded
+  setTimeout(() => {
+    // RealScout
+    if (typeof window !== 'undefined' && window.RealScout) {
+      window.RealScout.init({
+        apiKey: widgetConfig.realscout.apiKey,
+        accountId: widgetConfig.realscout.accountId,
+      });
+    }
 
-  // Homebot
-  if (typeof window !== 'undefined' && window.Homebot) {
-    window.Homebot.init({
-      apiKey: widgetConfig.homebot.apiKey,
-      accountId: widgetConfig.homebot.accountId,
-    });
-  }
+    // Homebot
+    if (typeof window !== 'undefined' && window.Homebot) {
+      window.Homebot.init({
+        apiKey: widgetConfig.homebot.apiKey,
+        accountId: widgetConfig.homebot.accountId,
+      });
+    }
 
-  // CloudCMA
-  if (typeof window !== 'undefined' && window.CloudCMA) {
-    window.CloudCMA.init({
-      apiKey: widgetConfig.cloudcma.apiKey,
-    });
-  }
+    // CloudCMA
+    if (typeof window !== 'undefined' && window.CloudCMA) {
+      window.CloudCMA.init({
+        apiKey: widgetConfig.cloudcma.apiKey,
+      });
+    }
 
-  // Percy.ai
-  if (typeof window !== 'undefined' && window.Percy) {
-    window.Percy.init({
-      apiKey: widgetConfig.percy.apiKey,
-      region: widgetConfig.percy.region,
-    });
-  }
+    // Percy.ai
+    if (typeof window !== 'undefined' && window.Percy) {
+      window.Percy.init({
+        apiKey: widgetConfig.percy.apiKey,
+        region: widgetConfig.percy.region,
+      });
+    }
+  }, 1000);
 }; 
