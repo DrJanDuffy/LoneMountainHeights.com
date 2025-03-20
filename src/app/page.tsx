@@ -28,7 +28,7 @@ export default function Home() {
     <main className="min-h-screen">
       {/* RealScout Simple Search */}
       <div className="w-full max-w-3xl mx-auto pt-8 px-4">
-        <realscout-simple-search></realscout-simple-search>
+        <realscout-simple-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-simple-search>
       </div>
 
       {/* Hero Section */}
