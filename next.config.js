@@ -57,7 +57,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self' https://widgets.realscout.com https://www.homebot.ai https://widgets.cloudcma.com https://cdn.percy.ai; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://widgets.realscout.com https://www.homebot.ai https://widgets.cloudcma.com https://cdn.percy.ai https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'self';"
+            value: "default-src 'self' https://widgets.realscout.com https://em.realscout.com https://www.homebot.ai https://widgets.cloudcma.com https://cdn.percy.ai; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://widgets.realscout.com https://em.realscout.com https://www.homebot.ai https://widgets.cloudcma.com https://cdn.percy.ai https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'self';"
           },
         ],
       },
