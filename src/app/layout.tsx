@@ -12,11 +12,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Lone Mountain Homes | Your Trusted Real Estate Partner",
   description: "Discover your dream home in the Lone Mountain area. Access powerful market analysis tools, property valuations, and expert real estate guidance.",
-  keywords: "Lone Mountain homes, real estate, market analysis, property valuation, home buying, home selling",
   metadataBase: new URL('https://www.findlonemountainhomes.com'),
-  alternates: {
-    canonical: '/',
-  },
+  keywords: "Lone Mountain homes, real estate, market analysis, property valuation, home buying, home selling",
   robots: {
     index: true,
     follow: true,
@@ -46,12 +43,8 @@ export const metadata: Metadata = {
     description: 'Discover your dream home in the Lone Mountain area. Access powerful market analysis tools.',
     images: ['https://www.findlonemountainhomes.com/images/twitter-image.jpg'],
   },
-  verification: {
-    google: 'add-your-google-site-verification-here',
-    other: {
-      'facebook-domain-verification': 'add-facebook-domain-verification',
-      'msvalidate.01': 'add-bing-verification',
-    },
+  icons: {
+    icon: '/favicon.ico',
   },
 };
 
@@ -63,34 +56,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* Search Engine Verification */}
-        <meta name="google-site-verification" content="add-your-google-site-verification-here" />
-        <meta name="facebook-domain-verification" content="add-facebook-domain-verification" />
-        <meta name="msvalidate.01" content="add-bing-verification" />
-        
-        {/* Structured Data */}
-        <Script
-          id="structured-data"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "RealEstateAgent",
-              "name": "Lone Mountain Homes",
-              "url": "https://www.findlonemountainhomes.com",
-              "description": "Your trusted real estate partner in the Lone Mountain area.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Lone Mountain",
-                "addressRegion": "MT",
-                "addressCountry": "US"
-              },
-              "areaServed": "Lone Mountain",
-              "priceRange": "$$"
-            })
-          }}
-        />
-
         {/* RealScout Web Components */}
         <Script 
           src="https://em.realscout.com/widgets/realscout-web-components.umd.js" 
@@ -113,31 +78,50 @@ export default function RootLayout({
           src="https://widgets.realscout.com/embed.js"
           strategy="afterInteractive"
           async
-          defer
         />
         
         <Script 
           src="https://www.homebot.ai/widget/embed.js"
           strategy="afterInteractive"
           async
-          defer
         />
         
         <Script 
           src="https://widgets.cloudcma.com/loader.js"
           strategy="afterInteractive"
           async
-          defer
         />
         
         <Script 
           src="https://cdn.percy.ai/js/hvs-widget.min.js"
           strategy="afterInteractive"
           async
-          defer
+        />
+
+        {/* Structured Data */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "RealEstateAgent",
+              "name": "Lone Mountain Homes",
+              "url": "https://www.findlonemountainhomes.com",
+              "description": "Your trusted real estate partner in the Lone Mountain area.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lone Mountain",
+                "addressRegion": "MT",
+                "addressCountry": "US"
+              },
+              "areaServed": "Lone Mountain",
+              "priceRange": "$$"
+            })
+          }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased bg-gray-50`}>
         {children}
       </body>
     </html>
