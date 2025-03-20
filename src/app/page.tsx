@@ -26,6 +26,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      {/* RealScout Simple Search */}
+      <div className="w-full max-w-3xl mx-auto pt-8 px-4">
+        <realscout-simple-search></realscout-simple-search>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="absolute inset-0 z-0 bg-black/30"></div>
