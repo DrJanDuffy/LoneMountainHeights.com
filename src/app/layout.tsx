@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module" async></script>
+        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
         <style>{`
           realscout-office-listings {
             --rs-listing-divider-color: rgb(101, 141, 172);
