@@ -5,9 +5,39 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  
+  /* Design System Colors */
+  --primary-blue: #0A2540;
+  --primary-accent: #3A8DDE;
+  --background-light: #F7F9FC;
+  --success-green: #16B286;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+}
+
+/* RealScout Widget Styling */
+realscout-office-listings {
+  display: block;
+  width: 100%;
+  min-height: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Widget Container Styling */
+.widget-container {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  background: white;
+  z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  realscout-office-listings {
+    min-height: 400px;
+  }
 } 

@@ -1,6 +1,7 @@
 export default function Home() {
   return (
     <main>
+      {/* Hero Section */}
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="text-center text-white px-4">
           <h1 className="text-4xl font-bold mb-4">
@@ -19,6 +20,40 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* RealScout Office Listings Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Featured Properties
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Explore our curated selection of premium properties in the Lone Mountain area
+            </p>
+          </div>
+          
+          <div className="max-w-7xl mx-auto">
+            <div 
+              className="bg-white rounded-lg shadow-lg p-6"
+              style={{ 
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                minHeight: '480px',
+                zIndex: 1000
+              }}
+            >
+              <realscout-office-listings 
+                agent-encoded-id="QWdlbnQtMjI1MDUw" 
+                sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+                listing-status="For Sale" 
+                property-types="SFR,MF,TC" 
+                price-min="600000" 
+                price-max="1200000"
+              ></realscout-office-listings>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
