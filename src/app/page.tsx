@@ -41,9 +41,9 @@ export default function Home() {
                 agentEncodedId="QWdlbnQtMjI1MDUw"
                 sortOrder="STATUS_AND_SIGNIFICANT_CHANGE"
                 listingStatus="For Sale"
-                propertyTypes="SFR"
-                priceMin=""
-                priceMax=""
+                propertyTypes="SFR,MF,TC"
+                priceMin="600000"
+                priceMax="1200000"
               />
             </div>
           </div>
