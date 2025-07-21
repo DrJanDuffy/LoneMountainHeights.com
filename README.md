@@ -73,3 +73,4 @@ A modern real estate website featuring powerful market analysis tools and proper
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+# Vercel deployment trigger
