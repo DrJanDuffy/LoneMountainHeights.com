@@ -22,14 +22,16 @@ export default function RealScoutWidget({
   const widgetRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     const loadWidget = async () => {
       try {
         setIsLoading(true);
         setHasError(false);
+        setRetryCount(prev => prev + 1);
         
-        console.log('Loading RealScout widget with params:', {
+        console.log(`Loading RealScout widget (attempt ${retryCount + 1}) with params:`, {
           agentEncodedId,
           sortOrder,
           listingStatus,
@@ -38,9 +40,23 @@ export default function RealScoutWidget({
           priceMax
         });
 
-        // Check if the script is already loaded
-        if (!customElements.get('realscout-office-listings')) {
-          console.log('RealScout script not loaded, loading now...');
+        // Wait for the script to be available
+        let scriptLoaded = false;
+        let scriptAttempts = 0;
+        
+        while (!scriptLoaded && scriptAttempts < 10) {
+          if (customElements.get('realscout-office-listings')) {
+            scriptLoaded = true;
+            console.log('RealScout script already loaded');
+          } else {
+            console.log(`Waiting for RealScout script... (attempt ${scriptAttempts + 1})`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            scriptAttempts++;
+          }
+        }
+
+        if (!scriptLoaded) {
+          console.log('RealScout script not found, loading manually...');
           
           // Load the RealScout script
           const script = document.createElement('script');
@@ -48,7 +64,7 @@ export default function RealScoutWidget({
           script.type = 'module';
           document.head.appendChild(script);
 
-          // Wait for the script to load and custom element to be registered
+          // Wait for the script to load
           await new Promise((resolve) => {
             script.onload = () => {
               console.log('RealScout script loaded successfully');
@@ -56,13 +72,12 @@ export default function RealScoutWidget({
             };
             script.onerror = () => {
               console.error('Failed to load RealScout script');
-              setHasError(true);
               resolve(null);
             };
           });
 
-          // Wait a bit more for the custom element to be registered
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          // Wait for the custom element to be registered
+          await new Promise(resolve => setTimeout(resolve, 3000));
         }
 
         // Create the widget element
@@ -77,48 +92,62 @@ export default function RealScoutWidget({
           widget.setAttribute('price-min', priceMin);
           widget.setAttribute('price-max', priceMax);
           
-          // Add event listeners for debugging
-          widget.addEventListener('load', () => {
-            console.log('RealScout widget loaded successfully');
-            setIsLoading(false);
-          });
-          
-          widget.addEventListener('error', (e) => {
-            console.error('RealScout widget error:', e);
-            setHasError(true);
-            setIsLoading(false);
-          });
-          
           // Clear the container and append the widget
           widgetRef.current.innerHTML = '';
           widgetRef.current.appendChild(widget);
           
-          // Set a timeout to check if widget loaded
+          // Give the widget more time to load
           setTimeout(() => {
             if (widgetRef.current?.querySelector('realscout-office-listings')) {
               const widgetElement = widgetRef.current.querySelector('realscout-office-listings');
-              if (widgetElement && widgetElement.innerHTML.includes('No listings available')) {
-                console.log('Widget loaded but no listings available');
+              if (widgetElement) {
+                console.log('Widget element created successfully');
+                setIsLoading(false);
+                
+                // Check for content after a longer delay
+                setTimeout(() => {
+                  if (widgetElement.innerHTML.includes('No listings available') && retryCount < 3) {
+                    console.log('No listings available, retrying...');
+                    loadWidget(); // Retry
+                  }
+                }, 8000);
+              }
+            } else {
+              console.error('Widget element not found');
+              if (retryCount < 3) {
+                console.log('Retrying widget creation...');
+                loadWidget(); // Retry
+              } else {
                 setHasError(true);
+                setIsLoading(false);
               }
             }
-            setIsLoading(false);
-          }, 5000);
+          }, 3000);
           
         } else {
           console.error('RealScout custom element not available');
-          setHasError(true);
-          setIsLoading(false);
+          if (retryCount < 3) {
+            console.log('Retrying...');
+            setTimeout(() => loadWidget(), 2000);
+          } else {
+            setHasError(true);
+            setIsLoading(false);
+          }
         }
       } catch (error) {
         console.error('Error loading RealScout widget:', error);
-        setHasError(true);
-        setIsLoading(false);
+        if (retryCount < 3) {
+          console.log('Retrying due to error...');
+          setTimeout(() => loadWidget(), 2000);
+        } else {
+          setHasError(true);
+          setIsLoading(false);
+        }
       }
     };
 
     loadWidget();
-  }, [agentEncodedId, sortOrder, listingStatus, propertyTypes, priceMin, priceMax]);
+  }, [agentEncodedId, sortOrder, listingStatus, propertyTypes, priceMin, priceMax, retryCount]);
 
   if (isLoading) {
     return (
@@ -132,6 +161,7 @@ export default function RealScoutWidget({
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading property listings...</p>
+          <p className="text-sm text-gray-400 mt-2">This may take a few moments</p>
         </div>
       </div>
     );

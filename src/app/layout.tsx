@@ -11,12 +11,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script 
-          src="https://widgets.realscout.com/widgets.js" 
-          integrity="sha384-REAL_SCOUT_INTEGRITY_HASH"
-          crossOrigin="anonymous"
-          async
-        />
         <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
         <style>
           {`
