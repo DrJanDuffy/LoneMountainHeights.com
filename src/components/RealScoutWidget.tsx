@@ -19,14 +19,16 @@ export default function RealScoutWidget() {
       if (typeof customElements !== 'undefined' && customElements.get('realscout-office-listings')) {
         console.log('RealScout script loaded, creating widget');
         
-        // Create the widget element
+        // Create the widget element with minimal configuration
         const widget = document.createElement('realscout-office-listings');
         widget.setAttribute('agent-encoded-id', 'QWdlbnQtMjI1MDUw');
-        widget.setAttribute('sort-order', 'STATUS_AND_SIGNIFICANT_CHANGE');
-        widget.setAttribute('listing-status', 'For Sale');
-        widget.setAttribute('property-types', 'SFR,MF,TC');
-        widget.setAttribute('price-min', '600000');
-        widget.setAttribute('price-max', '1200000');
+        
+        // Remove restrictive filters that might cause "No listings available"
+        // widget.setAttribute('sort-order', 'STATUS_AND_SIGNIFICANT_CHANGE');
+        // widget.setAttribute('listing-status', 'For Sale');
+        // widget.setAttribute('property-types', 'SFR,MF,TC');
+        // widget.setAttribute('price-min', '600000');
+        // widget.setAttribute('price-max', '1200000');
 
         // Clear container and add widget
         containerRef.current.innerHTML = '';
