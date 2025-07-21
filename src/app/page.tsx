@@ -1,3 +1,5 @@
+import RealScoutWidget from '@/components/RealScoutWidget';
+
 export default function Home() {
   return (
     <main>
@@ -35,14 +37,7 @@ export default function Home() {
           
           <div className="max-w-7xl mx-auto">
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <realscout-office-listings 
-                agent-encoded-id="QWdlbnQtMjI1MDUw" 
-                sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
-                listing-status="For Sale" 
-                property-types="SFR,MF,TC" 
-                price-min="600000" 
-                price-max="1200000"
-              ></realscout-office-listings>
+              <RealScoutWidget />
             </div>
           </div>
         </div>
