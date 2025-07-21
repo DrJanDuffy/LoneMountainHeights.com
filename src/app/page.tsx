@@ -1,15 +1,4 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Lone Mountain Homes - Discover Your Dream Home',
-  description: 'Explore premium properties in the Lone Mountain area. Find your perfect home with our curated selection of luxury real estate.',
-  keywords: 'Lone Mountain Homes, real estate, luxury properties, dream home, premium listings',
-  openGraph: {
-    title: 'Lone Mountain Homes - Discover Your Dream Home',
-    description: 'Explore premium properties in the Lone Mountain area.',
-    type: 'website',
-  },
-};
+import RealScoutWidget from '@/components/RealScoutWidget';
 
 export default function Home() {
   return (
@@ -48,14 +37,7 @@ export default function Home() {
           
           <div className="max-w-7xl mx-auto">
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <realscout-office-listings 
-                agent-encoded-id="QWdlbnQtMjI1MDUw" 
-                sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
-                listing-status="For Sale" 
-                property-types="SFR,MF,TC" 
-                price-min="600000" 
-                price-max="1200000"
-              ></realscout-office-listings>
+              <RealScoutWidget />
             </div>
           </div>
         </div>
