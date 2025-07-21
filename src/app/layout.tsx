@@ -49,13 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* RealScout Widget Script */}
-        <script 
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js" 
-          type="module"
-        />
-        
-        {/* Widget Styling */}
+        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
         <style>
           {`
             realscout-office-listings {

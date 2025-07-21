@@ -27,7 +27,6 @@ declare global {
         'property-types': string;
         'price-min': string;
         'price-max': string;
-        [key: string]: any; // Allow additional attributes
       };
     }
   }
